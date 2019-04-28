@@ -122,7 +122,7 @@ def model_fn_builder(num_labels, learning_rate, num_train_steps,
         accuracy = tf.metrics.accuracy(label_ids, predictions)
         loss = tf.metrics.mean(per_example_loss)
         # Chris added evaluation metrics (f1, auc, recall, precision)
-        f1_score = tf.contrib.metrics.f1_score(
+        '''f1_score = tf.contrib.metrics.f1_score(
             label_ids,
             predictions)
         auc = tf.metrics.auc(
@@ -133,15 +133,11 @@ def model_fn_builder(num_labels, learning_rate, num_train_steps,
             predictions)
         precision = tf.metrics.precision(
             label_ids,
-            predictions) 
+            predictions) '''
         
         return {
             "eval_accuracy": accuracy,
-            "eval_loss": loss,
-            "f1_score": f1_score,
-            "auc": auc,
-            "precision": precision,
-            "recall": recall
+            "eval_loss": loss
         }
 
       eval_metrics = (metric_fn, [per_example_loss, label_ids, logits])
@@ -176,10 +172,12 @@ def create_tokenizer_from_hub_module(bert_hub_module_handle):
 def main(_):
   tf.logging.set_verbosity(tf.logging.INFO)
 
+# Chris added emotion processor
   processors = {
       "cola": run_classifier.ColaProcessor,
       "mnli": run_classifier.MnliProcessor,
       "mrpc": run_classifier.MrpcProcessor,
+      "emotion": run_classifier.EmotionProcessor
   }
 
   if not FLAGS.do_train and not FLAGS.do_eval:
