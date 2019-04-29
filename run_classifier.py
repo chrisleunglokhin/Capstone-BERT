@@ -878,6 +878,7 @@ def main(_):
       "mrpc": MrpcProcessor,
       "xnli": XnliProcessor,
       "emotion": EmotionProcessor,  
+      "twitter": TwitterProcessor
   }
 
   tokenization.validate_case_matches_checkpoint(FLAGS.do_lower_case,
