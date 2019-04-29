@@ -177,7 +177,8 @@ def main(_):
       "cola": run_classifier.ColaProcessor,
       "mnli": run_classifier.MnliProcessor,
       "mrpc": run_classifier.MrpcProcessor,
-      "emotion": run_classifier.EmotionProcessor
+      "emotion": run_classifier.EmotionProcessor,
+      "twitter": run_classifier.TwitterProcessor,
   }
 
   if not FLAGS.do_train and not FLAGS.do_eval:
