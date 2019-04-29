@@ -436,6 +436,7 @@ class TwitterProcessor(DataProcessor):
     """Creates examples for the training and dev sets."""
     examples = []
     for (i, line) in enumerate(lines):
+      print (line)
       # All sets have a header
       if i == 0: continue
       guid = "%s-%s" % (set_type, i)
