@@ -440,6 +440,7 @@ class TwitterProcessor(DataProcessor):
       # All sets have a header
       if i == 0: continue
       guid = "%s-%s" % (set_type, i)
+      # Add this line to debug
       text_a = tokenization.convert_to_unicode(line[1])
       label = tokenization.convert_to_unicode(line[0])
       examples.append(
